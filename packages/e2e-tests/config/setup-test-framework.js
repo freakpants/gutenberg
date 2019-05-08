@@ -186,18 +186,7 @@ async function runAxeTestsForBlockEditor() {
 // each other's side-effects.
 beforeAll( async () => {
 	const client = await page.target().createCDPSession();
-	await client.send( 'Network.emulateNetworkConditions', {
-		// Whether chrome should simulate
-		// the absence of connectivity
-		offline: false,
-		// Simulated download speed (bytes/s)
-		downloadThroughput: 1.5 * 1024 * 1024 / 8,
-		// Simulated upload speed (bytes/s)
-		uploadThroughput: 750 * 1024 / 8,
-		// Simulated latency (ms)
-		latency: 40,
-	} );
-	await client.send( 'Emulation.setCPUThrottlingRate', { rate: 8 } );
+	await client.send( 'Emulation.setCPUThrottlingRate', { rate: 2 } );
 
 	capturePageEventsForTearDown();
 	enablePageDialogAccept();
