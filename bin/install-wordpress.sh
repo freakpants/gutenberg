@@ -75,13 +75,13 @@ docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm $CONTAINER chmod 767 /var/w
 CURRENT_WP_VERSION=$(docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run -T --rm $CLI core version)
 echo -e $(status_message "Current WordPress version: $CURRENT_WP_VERSION...")
 
-if [ "$WP_VERSION" == "latest" ]; then
+#if [ "$WP_VERSION" == "latest" ]; then
 	# Check for WordPress updates, to make sure we're running the very latest version.
-	echo -e $(status_message "Updating WordPress to the latest version...")
-	docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm -u 33 $CLI core update --quiet
-	echo -e $(status_message "Updating The WordPress Database...")
-	docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm -u 33 $CLI core update-db --quiet
-fi
+#	echo -e $(status_message "Updating WordPress to the latest version...")
+#	docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm -u 33 $CLI core update --quiet
+#	echo -e $(status_message "Updating The WordPress Database...")
+#	docker-compose $DOCKER_COMPOSE_FILE_OPTIONS run --rm -u 33 $CLI core update-db --quiet
+#fi
 
 # If the 'wordpress' volume wasn't during the down/up earlier, but the post port has changed, we need to update it.
 echo -e $(status_message "Checking the site's url...")
